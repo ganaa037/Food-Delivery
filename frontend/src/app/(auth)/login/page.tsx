@@ -1,4 +1,4 @@
-import { ChevronLeft } from "lucide-react";
+import { SquareChevronLeft } from "lucide-react";
 import React from "react";
 import {
   Card,
@@ -8,20 +8,35 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function page() {
   return (
-    <Card>
+    <Card className="w-[416px] h-[288px] flex gap-6 ">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <SquareChevronLeft />
+        <CardTitle className="text-[#09090B] text-6 font-semibold leading-8">Create your account</CardTitle>
+        <CardDescription>Sign up to explore your favorite dishes.</CardDescription>
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
+      <CardContent className="px-0">
+        <Input></Input>
+      </CardContent>
+      <CardContent className="px-0 flex rounded-[6px]">
+        <Button disabled className="w-full">
+
+          Let's Go
+        </Button>
+
       </CardContent>
       <CardFooter>
-        <p>Card Footer</p>
+        <p>Already have an account?</p>
+
+        <Link href="">Login</Link>
       </CardFooter>
     </Card>
   );
 }
+
+
