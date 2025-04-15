@@ -3,7 +3,7 @@ import React from "react";
 
 export const AuthBigImage = () => {
   return (
-    <div>
+    <div className="w-[60%] h-full flex items-center">
       <Image
         width={856}
         height={904}
