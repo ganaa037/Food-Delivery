@@ -1,20 +1,16 @@
-import { UserModel } from "../model/user.js";
+import { CategoryModel } from "../model/categories.js";
 
-export const createUser = async (req, res) => {
-  const { email, phoneaNumber, address, isVerified, password } = req.body;
+export const createCategory = async (req, res) => {
+  const { name } = req.body;
   try {
-    const user = await UserModel.create({
-      email: email,
-      password: password,
-      phoneaNumber: phoneaNumber,
-      address: address,
-      isVerified: isVerified,
+    const category = await CategoryModel.create({
+      name: name,
     });
     return res
       .status(200)
       .send({
         success: true,
-        user: user,
+        category: category,
       })
       .end();
   } catch (error) {
@@ -28,14 +24,14 @@ export const createUser = async (req, res) => {
       .end();
   }
 };
-export const getUsers = async (_, res) => {
+export const getCategory = async (_, res) => {
   try {
-    const users = await UserModel.find();
+    const category = await CategoryModel.find();
     return res
       .status(200)
       .send({
         success: true,
-        users: users,
+        category: category,
       })
       .end();
   } catch (error) {
@@ -49,15 +45,15 @@ export const getUsers = async (_, res) => {
       .end();
   }
 };
-export const getUsersById = async (req, res) => {
+export const getCategoryById = async (req, res) => {
   const { id } = req.params;
   try {
-    const users = await UserModel.findById(id);
+    const users = await CategoryModel.findById(id);
     return res
       .status(200)
       .send({
         success: true,
-        users: users,
+        category: category,
       })
       .end();
   } catch (error) {

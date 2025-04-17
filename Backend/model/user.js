@@ -5,6 +5,11 @@ const userSchema = new mongoose.Schema({
   phoneaNumber: String,
   address: String,
   isVerified: Boolean,
+  role: {
+    type: String,
+    enum: ["User", "Admin"],
+    default: "User",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
