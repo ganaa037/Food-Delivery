@@ -7,7 +7,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen flex-col w-[1440px]">
       <Header sign={true} className="" />
       {children}
       <Footer />

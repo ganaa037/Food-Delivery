@@ -1,16 +1,19 @@
-import { CategoryModel } from "../model/categories.js";
+import { FoodModel } from "../model/food.js";
 
-export const createCategory = async (req, res) => {
-  const { name } = req.body;
+export const createFood = async (req, res) => {
+  const { foodName, price, image, ingredients } = req.body;
   try {
-    const category = await CategoryModel.create({
-      name: name,
+    const food = await FoodModel.create({
+      foodName: foodName,
+      price: price,
+      image: image,
+      ingredients: ingredients,
     });
     return res
       .status(200)
       .send({
         success: true,
-        category: category,
+        food: food,
       })
       .end();
   } catch (error) {
@@ -24,14 +27,14 @@ export const createCategory = async (req, res) => {
       .end();
   }
 };
-export const getCategory = async (_, res) => {
+export const getFood = async (_, res) => {
   try {
-    const category = await CategoryModel.find();
+    const food = await FoodModel.find();
     return res
       .status(200)
       .send({
         success: true,
-        category: category,
+        food: food,
       })
       .end();
   } catch (error) {
@@ -45,15 +48,15 @@ export const getCategory = async (_, res) => {
       .end();
   }
 };
-export const getCategoryById = async (req, res) => {
+export const getFoodById = async (req, res) => {
   const { id } = req.params;
   try {
-    const category = await CategoryModel.findById(id);
+    const food = await CategoryModel.findById(id);
     return res
       .status(200)
       .send({
         success: true,
-        category: category,
+        food: food,
       })
       .end();
   } catch (error) {
