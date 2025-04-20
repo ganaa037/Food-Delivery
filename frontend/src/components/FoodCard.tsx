@@ -9,12 +9,19 @@ export const FoodCard = () => {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
     );
+
+    console.log(response, "response");
+
     setData(response.data.food);
+
+    console.log(response.data, "response data")
   };
 
   useEffect(() => {
     fetchdata();
   }, []);
+  console.log(process.env.NEXT_PUBLIC_BACKEND_URI, "env");
+
   return (
     <>
       {data?.map((value: any, index: any) => (
