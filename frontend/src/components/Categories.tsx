@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import { Badge } from "./ui/badge";
 import {
   Carousel,
@@ -7,26 +8,20 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-export const Categories = () => {
-  const mockData = [
-    "Appetizers",
-    "Pizza",
-    "Burger",
-    "Sushi",
-    "Salad",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-    "Dessert",
-  ];
+import axios from "axios";
+import { FoodCard } from "./FoodCard";
+export const Categories = ({ onClick }: { onClick: () => void }) => {
+  const [categories, setCategories] = useState([]);
+  const fetchCategory = async () => {
+    const res = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URI}/category`
+    );
+    setCategories(res.data.category);
+    console.log(res.data, "gh");
+  };
+  useEffect(() => {
+    fetchCategory();
+  }, []);
   return (
     <div className="flex flex-col gap-9 px-12 ">
       <p className="text-[30px] font-semibold leading-9 text-[#FFF]">
@@ -34,14 +29,15 @@ export const Categories = () => {
       </p>
       <Carousel className="px-12">
         <CarouselContent className=" flex gap-5 w-full ">
-          {mockData.map((value: any, index: number) => {
+          {categories?.map((value: any, index: number) => {
             return (
               <CarouselItem key={index} className="basis-auto">
                 <Badge
+                  onClick={onClick}
                   variant="outline"
                   className="bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px]"
                 >
-                  {value}
+                  {value.name}
                 </Badge>
               </CarouselItem>
             );

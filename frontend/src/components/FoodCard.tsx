@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import axios from "axios";
+import { Categories } from "./Categories";
 export const FoodCard = () => {
   const [data, setData] = useState([]);
   const fetchdata = async () => {
@@ -10,17 +11,12 @@ export const FoodCard = () => {
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
     );
 
-    console.log(response, "response");
-
     setData(response.data.food);
-
-    console.log(response.data, "response data")
   };
 
   useEffect(() => {
     fetchdata();
   }, []);
-  console.log(process.env.NEXT_PUBLIC_BACKEND_URI, "env");
 
   return (
     <>
@@ -29,7 +25,11 @@ export const FoodCard = () => {
           key={index}
           className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white"
         >
-          <Image src={value.image} alt="foodimage" width={365} height={210} />
+          <img
+            className="w-[365px] h-[210px]"
+            src={value.image}
+            alt="foodimage"
+          />
           <div className="flex flex-col gap-2">
             <div className=" flex justify-between gap-2 w-full items-center">
               <p className="text-[#EF4444] text-6 font-semibold leading-8 h-8">
