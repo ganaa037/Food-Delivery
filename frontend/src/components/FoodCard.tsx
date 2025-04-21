@@ -50,14 +50,12 @@ export const FoodCard = () => {
             </div>
           </DialogTrigger>
 
-          <DialogContent className="w-[826px] h-[412px]">
+          <DialogContent className="w-[826px] h-[412px] p-6">
             <DialogHeader>
               <DialogTitle>
                 <img src={value.image}></img>
               </DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. Th
-              </DialogDescription>
+              <DialogDescription></DialogDescription>
             </DialogHeader>
           </DialogContent>
         </Dialog>

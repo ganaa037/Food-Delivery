@@ -14,9 +14,7 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex ">
-        <div>
-          <Header sign={false} className="px-0" />
-        </div>
+        <div>{/* <Header sign={false} className="px-0" /> */}</div>
         <div className="text-[#FAFAFA] text-4 font-normal leading-6 flex gap-[112px] ">
           <div className="">
             <p className="text-[#71717A] leading-7">NOMNOM </p>

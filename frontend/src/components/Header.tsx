@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
+import { Location } from "./Location";
 
 export const Header = ({
   sign,
@@ -33,6 +34,7 @@ export const Header = ({
       ) : (
         ""
       )}
+      <Location />
     </div>
   );
 };

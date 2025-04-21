@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import axios from "axios";
 import { FoodCard } from "./FoodCard";
-export const Categories = ({ onClick }: { onClick: () => void }) => {
+export const Categories = () => {
   const [categories, setCategories] = useState([]);
   const fetchCategory = async () => {
     const res = await axios.get(
@@ -22,6 +22,7 @@ export const Categories = ({ onClick }: { onClick: () => void }) => {
   useEffect(() => {
     fetchCategory();
   }, []);
+
   return (
     <div className="flex flex-col gap-9 px-12 ">
       <p className="text-[30px] font-semibold leading-9 text-[#FFF]">
@@ -32,13 +33,9 @@ export const Categories = ({ onClick }: { onClick: () => void }) => {
           {categories?.map((value: any, index: number) => {
             return (
               <CarouselItem key={index} className="basis-auto">
-                <Badge
-                  onClick={onClick}
-                  variant="outline"
-                  className="bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px]"
-                >
+                <button className="bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px]">
                   {value.name}
-                </Badge>
+                </button>
               </CarouselItem>
             );
           })}
