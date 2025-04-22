@@ -1,14 +1,9 @@
 import mongoose from "mongoose";
 const userSchema = new mongoose.Schema({
-  email: {type:String,
-    required:true,
-
-  },
+  email: { type: String, required: true },
   password: String,
-  phoneaNumber: String,
-  address:{type:String,
-    
-  },
+  phoneNumber: String,
+  address: { type: String, min: 6 },
   isVerified: Boolean,
   role: {
     type: String,

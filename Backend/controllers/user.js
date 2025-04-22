@@ -1,12 +1,12 @@
 import { UserModel } from "../model/user.js";
 
 export const createUser = async (req, res) => {
-  const { email, phoneaNumber, address, isVerified, password } = req.body;
+  const { email, phoneNumber, address, isVerified, password } = req.body;
   try {
     const user = await UserModel.create({
       email: email,
       password: password,
-      phoneaNumber: phoneaNumber,
+      phoneNumber: phoneNumber,
       address: address,
       isVerified: isVerified,
     });

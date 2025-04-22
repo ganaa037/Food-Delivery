@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, MapPin, ShoppingCart, User } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 export const Location = ({ user }: { user: string }) => {
   return (
     <div className="flex gap-3">
@@ -39,32 +39,9 @@ export const Location = ({ user }: { user: string }) => {
         </DialogContent>
       </Dialog>
 
-      <Dialog>
-        <DialogTrigger className="h-[1024px]">
-          <div className="w-9 h-9 bg-gray-500 rounded-[50%] flex items-center justify-center">
-            <ShoppingCart className="size-4" />
-          </div>
-        </DialogTrigger>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Are you absolutely sure?</DialogTitle>
-            <DialogDescription>
-              <Tabs defaultValue="account" className="w-[400px]">
-                <TabsList>
-                  <TabsTrigger value="account">Account</TabsTrigger>
-                  <TabsTrigger value="password">Password</TabsTrigger>
-                </TabsList>
-                <TabsContent value="account">
-                  Make changes to your account here.
-                </TabsContent>
-                <TabsContent value="password">
-                  Change your password here.
-                </TabsContent>
-              </Tabs>
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
+      <div className="w-9 h-9 bg-gray-500 rounded-[50%] flex items-center justify-center">
+        <ShoppingCart className="size-4" />
+      </div>
       <div className="w-9 h-9 rounded-[50%] flex items-center justify-center bg-red-500">
         <User className="size-4 " />
       </div>
