@@ -16,6 +16,7 @@ export const createFood = async (req, res) => {
         success: true,
         food: food,
       })
+
       .end();
   } catch (error) {
     console.error(error, "err");
@@ -30,7 +31,7 @@ export const createFood = async (req, res) => {
 };
 export const getFood = async (_, res) => {
   try {
-    const food = await FoodModel.find();
+    const food = await FoodModel.find().populate();
     return res
       .status(200)
       .send({

@@ -4,7 +4,11 @@ const foodSchema = new mongoose.Schema({
   price: Number,
   image: String,
   ingredients: String,
-  category: { type: Schema.Types.ObjectId, ref: "Categories", required: true },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "categories",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

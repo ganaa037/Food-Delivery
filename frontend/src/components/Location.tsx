@@ -9,7 +9,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { ChevronRight, MapPin, ShoppingCart, User } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 export const Location = ({ user }: { user: string }) => {
   return (
@@ -38,10 +48,35 @@ export const Location = ({ user }: { user: string }) => {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      <Sheet>
+        <SheetTrigger className="w-9 h-9 bg-gray-500 rounded-[50%] flex items-center justify-center">
+          <ShoppingCart className="size-4" />
+        </SheetTrigger>
+        <SheetContent className="bg-gray-500 w-[536px] flex items-center p-[32px]">
+          <SheetHeader>
+            <SheetTitle>Order Detail</SheetTitle>
+            <SheetDescription>
+              <Tabs
+                defaultValue="account"
+                className="w-[471px] h-[840px]  flex gap-6 "
+              >
+                <TabsList className="w-[471px]">
+                  <TabsTrigger value="account">Cart</TabsTrigger>
+                  <TabsTrigger value="password">Order</TabsTrigger>
+                </TabsList>
+                <TabsContent value="account" className="bg-white ">
+                  Make changes to your account here.
+                  <div>jj</div>
+                </TabsContent>
+                <TabsContent value="password">
+                  Change your password here.
+                </TabsContent>
+              </Tabs>
+            </SheetDescription>
+          </SheetHeader>
+        </SheetContent>
+      </Sheet>
 
-      <div className="w-9 h-9 bg-gray-500 rounded-[50%] flex items-center justify-center">
-        <ShoppingCart className="size-4" />
-      </div>
       <div className="w-9 h-9 rounded-[50%] flex items-center justify-center bg-red-500">
         <User className="size-4 " />
       </div>

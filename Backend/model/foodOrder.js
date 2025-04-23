@@ -1,5 +1,10 @@
 import mongoose, { Schema } from "mongoose";
 const foodOrderSchema = new mongoose.Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   totalPrice: Number,
   foodOrderItems: {
     type: Schema.Types.ObjectId,
