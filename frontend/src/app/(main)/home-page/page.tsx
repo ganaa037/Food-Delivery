@@ -1,6 +1,6 @@
 import { Categories } from "@/components/Categories";
 import { FoodCard } from "@/components/FoodCard";
-import { Fullscreen } from "lucide-react";
+
 import Image from "next/image";
 import React from "react";
 

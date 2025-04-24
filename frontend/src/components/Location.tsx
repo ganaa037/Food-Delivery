@@ -21,7 +21,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-export const Location = ({ user }: { user: string }) => {
+export const Location = () => {
   return (
     <div className="flex gap-3">
       <Dialog>
@@ -53,26 +53,25 @@ export const Location = ({ user }: { user: string }) => {
           <ShoppingCart className="size-4" />
         </SheetTrigger>
         <SheetContent className="bg-gray-500 w-[536px] flex items-center p-[32px]">
-          <SheetHeader>
-            <SheetTitle>Order Detail</SheetTitle>
-            <SheetDescription>
-              <Tabs
-                defaultValue="account"
-                className="w-[471px] h-[840px]  flex gap-6 "
-              >
+          <SheetHeader className="">
+            <SheetTitle className="">
+              <Tabs defaultValue="Cart" className="w-fit   flex gap-5 ">
                 <TabsList className="w-[471px]">
-                  <TabsTrigger value="account">Cart</TabsTrigger>
-                  <TabsTrigger value="password">Order</TabsTrigger>
+                  <TabsTrigger value="Cart">Cart</TabsTrigger>
+                  <TabsTrigger value="Orders">Order</TabsTrigger>
                 </TabsList>
-                <TabsContent value="account" className="bg-white ">
-                  Make changes to your account here.
-                  <div>jj</div>
+                <TabsContent
+                  value="Cart"
+                  className="bg-white w-[471px] h-[540px] "
+                >
+                  tj
                 </TabsContent>
-                <TabsContent value="password">
+                <TabsContent value="Order" className="bg-black ">
                   Change your password here.
                 </TabsContent>
               </Tabs>
-            </SheetDescription>
+            </SheetTitle>
+            <SheetDescription></SheetDescription>
           </SheetHeader>
         </SheetContent>
       </Sheet>
