@@ -13,8 +13,14 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { Categories } from "./Categories";
+interface foodType {
+  image: string;
+  foodName: string;
+  price: string;
+  ingredients: string;
+}
 export const FoodCard = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<foodType[]>([]);
   const fetchdata = async () => {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
@@ -29,7 +35,7 @@ export const FoodCard = () => {
 
   return (
     <>
-      {data?.map((value: any, index: any) => (
+      {data?.map((value, index) => (
         <Dialog key={index}>
           <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
             <img
