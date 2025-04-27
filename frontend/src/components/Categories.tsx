@@ -10,8 +10,10 @@ import {
 } from "@/components/ui/carousel";
 import axios from "axios";
 import { FoodCard } from "./FoodCard";
+type categoryType = { name: string };
+
 export const Categories = () => {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState<categoryType[]>([]);
   const fetchCategory = async () => {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/category`
@@ -30,7 +32,7 @@ export const Categories = () => {
       </p>
       <Carousel className="px-12">
         <CarouselContent className=" flex gap-5 w-full ">
-          {categories?.map((value: any, index: number) => {
+          {categories?.map((value, index) => {
             return (
               <CarouselItem key={index} className="basis-auto">
                 <button className="bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px]">

@@ -21,6 +21,7 @@ app.use("/food", foodRouter);
 app.use("/foodOrder", foodOrderRouter);
 app.use("/foodOrderItem", foodOrderItemRouter);
 app.use("/", authRouter);
+
 app.get("/", (req, res) => {
   res.send("hello world");
 });

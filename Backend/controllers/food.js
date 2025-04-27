@@ -1,16 +1,21 @@
+import { CategoryModel } from "../model/categories.js";
 import { FoodModel } from "../model/food.js";
 
 export const createFood = async (req, res) => {
+<<<<<<< HEAD
   
   const { foodName, price, image, ingredients, category } = req.body;
  
+=======
+  const { foodName, price, image, ingredients, categories } = req.body;
+>>>>>>> 24a13ddbde751f07e922f4824cd650320401682b
   try {
     const food = await FoodModel.create({
       foodName: foodName,
       price: price,
       image: image,
       ingredients: ingredients,
-      category: category,
+      categories: categories,
     });
     return res
       .status(200)
@@ -33,7 +38,11 @@ export const createFood = async (req, res) => {
 };
 export const getFood = async (_, res) => {
   try {
+<<<<<<< HEAD
     const food = await FoodModel.find().populate("category");
+=======
+    const food = await FoodModel.find().populate("categories");
+>>>>>>> 24a13ddbde751f07e922f4824cd650320401682b
     return res
       .status(200)
       .send({
@@ -65,6 +74,33 @@ export const getFoodById = async (req, res) => {
       .end();
   } catch (error) {
     console.error(error, "err");
+    return res
+      .status(400)
+      .send({
+        success: false,
+        message: error,
+      })
+      .end();
+  }
+};
+
+export const getFoodsByCategoryId = async (req, res) => {
+  const { categoryID } = req.params;
+  try {
+    const foodsByCategory = await FoodModel.find({
+      categories: categoryID,
+    }).populate("categories");
+    const category = await CategoryModel.findById(categoryID);
+    return res
+      .status(200)
+      .send({
+        succes: true,
+        category: category,
+        foodsByCategory: foodsByCategory,
+      })
+      .end();
+  } catch (error) {
+    console.error(error, "error");
     return res
       .status(400)
       .send({

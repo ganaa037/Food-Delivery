@@ -17,7 +17,7 @@ export const createFoodOrder = async (req, res) => {
 };
 export const getFoodOrder = async (req, res) => {
   try {
-    const foodOrder = await FoodOrderModel.find();
+    const foodOrder = await FoodOrderModel.find().populate("foodOrderItems");
     return res.status(200).send({ success: true, foodOrder: foodOrder }).end();
   } catch (error) {
     console.error(error, "err");

@@ -26,13 +26,13 @@ export const Location = () => {
   return (
     <div className="flex gap-3">
       <Dialog>
-        <DialogTrigger asChild>
+        <DialogTrigger asChild >
           <Button
             className="w-[251px] h-[36px] rounded-[9999px] flex gap-1 text-red-500"
             variant="outline"
           >
             <MapPin className=" size-5 " /> Delivery address:
-            <label className="text-gray-400">Add location</label>
+            <label className="text-gray-400" >Add location</label>
             <ChevronRight className="size-5" />
           </Button>
         </DialogTrigger>

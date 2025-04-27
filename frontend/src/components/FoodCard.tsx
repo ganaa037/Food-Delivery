@@ -13,8 +13,14 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import { Categories } from "./Categories";
+interface foodType {
+  image: string;
+  foodName: string;
+  price: string;
+  ingredients: string;
+}
 export const FoodCard = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<foodType[]>([]);
   const fetchdata = async () => {
     const response = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
