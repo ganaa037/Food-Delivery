@@ -4,7 +4,7 @@ const foodSchema = new mongoose.Schema({
   price: Number,
   image: String,
   ingredients: String,
-  category: {
+  category:{
     type: Schema.Types.ObjectId,
     ref: "categories",
     required: true,

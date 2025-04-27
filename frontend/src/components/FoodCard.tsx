@@ -28,7 +28,10 @@ export const FoodCard = () => {
   }, []);
 
   return (
-    <>
+    <div className="flex flex-col">
+    <div className="flex pt-[54px] flex-col w-full">
+      <h1 className="font-[600] text-[30px] text-white">mongol hool</h1>
+      <div className="flex gap-5 pt-[54px] flex-wrap">
       {data?.map((value: any, index: any) => (
         <Dialog key={index}>
           <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
@@ -60,6 +63,8 @@ export const FoodCard = () => {
           </DialogContent>
         </Dialog>
       ))}
-    </>
+     </div>
+      </div>
+    </div>
   );
 };

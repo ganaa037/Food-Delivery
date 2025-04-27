@@ -20,8 +20,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { Input } from "./ui/input";
 
-export const Location = ({ user }: { user: string }) => {
+export const Location = () => {
   return (
     <div className="flex gap-3">
       <Dialog>
@@ -30,7 +31,7 @@ export const Location = ({ user }: { user: string }) => {
             className="w-[251px] h-[36px] rounded-[9999px] flex gap-1 text-red-500"
             variant="outline"
           >
-            <MapPin className=" size-5" /> Delivery address:
+            <MapPin className=" size-5 " /> Delivery address:
             <label className="text-gray-400">Add location</label>
             <ChevronRight className="size-5" />
           </Button>
@@ -42,7 +43,7 @@ export const Location = ({ user }: { user: string }) => {
               Make changes to your profile here. Click save when you're done.
             </DialogDescription>
           </DialogHeader>
-
+          <Input></Input>
           <DialogFooter>
             <Button type="submit">Save changes</Button>
           </DialogFooter>

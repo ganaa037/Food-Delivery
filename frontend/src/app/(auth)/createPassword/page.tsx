@@ -12,7 +12,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-export const Cards = () => {
+export  default function page ()  {
   return (
     <Card className="w-[416px] h-[288px] flex gap-6 border-none">
       <CardHeader>

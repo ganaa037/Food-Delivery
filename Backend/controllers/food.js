@@ -1,7 +1,9 @@
 import { FoodModel } from "../model/food.js";
 
 export const createFood = async (req, res) => {
+  
   const { foodName, price, image, ingredients, category } = req.body;
+ 
   try {
     const food = await FoodModel.create({
       foodName: foodName,
@@ -31,7 +33,7 @@ export const createFood = async (req, res) => {
 };
 export const getFood = async (_, res) => {
   try {
-    const food = await FoodModel.find().populate();
+    const food = await FoodModel.find().populate("category");
     return res
       .status(200)
       .send({
@@ -53,7 +55,7 @@ export const getFood = async (_, res) => {
 export const getFoodById = async (req, res) => {
   const { id } = req.params;
   try {
-    const food = await CategoryModel.findById(id);
+    const food = await FoodModel.findById(id);
     return res
       .status(200)
       .send({
