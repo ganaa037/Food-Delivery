@@ -6,11 +6,11 @@ const foodOrderSchema = new mongoose.Schema({
     required: true,
   },
   totalPrice: Number,
-  foodOrderItems: {
+  foodOrderItems: [{
     type: Schema.Types.ObjectId,
     ref: "FoodOrderItem",
     required: true,
-  },
+  }],
   status: {
     type: String,
     enum: ["Fending", "Canceled", "Delivered"],
