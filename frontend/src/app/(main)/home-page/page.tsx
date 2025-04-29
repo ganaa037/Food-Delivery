@@ -15,5 +15,5 @@ export default function page() {
         <FoodCard />
       </div>
     </div>
-  )
+  );
 }

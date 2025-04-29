@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { CategoryModel } from "../model/categories.js";
 import { FoodModel } from "../model/food.js";
 
@@ -102,13 +103,23 @@ export const getFoodsByCategoryId = async (req, res) => {
   }
 };
 export const getFoodsCategoryById = async (req, res) => {
+  const { categoryId } = req.query;
+  const match = categoryId
+    ? {
+        $match: { _id: new Types.ObjectId(categoryId) },
+      }
+    : {
+        $match: {},
+      };
+  console.log(match, "match");
   try {
     const food = await CategoryModel.aggregate([
+      match,
       {
         $lookup: {
           from: "foods",
           localField: "_id",
-          foreignField: "category",
+          foreignField: "categories",
           as: "result",
         },
       },

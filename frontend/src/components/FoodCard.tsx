@@ -1,29 +1,35 @@
 "use client";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 import React, { useEffect, useState } from "react";
 
 import Image from "next/image";
 import axios from "axios";
 import { Categories } from "./Categories";
-interface foodType {
+import { useSearchParams } from "next/navigation";
+import { FoodCardHelper } from "./FoodCardHelper";
+
+type food = {
+  name: string;
   image: string;
   foodName: string;
-  price: string;
+  price: number;
   ingredients: string;
+};
+interface foodType {
+  _id: string;
+  name: string;
+  result: food[];
 }
+
 export const FoodCard = () => {
   const [data, setData] = useState<foodType[]>([]);
+  const searchParams = useSearchParams();
+  const categoryId = searchParams.get("categoryId");
   const fetchdata = async () => {
     const response = await axios.get(
-      `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
+      categoryId
+        ? `${process.env.NEXT_PUBLIC_BACKEND_URI}/food?categoryId=${categoryId}`
+        : `${process.env.NEXT_PUBLIC_BACKEND_URI}/food`
     );
 
     setData(response.data.food);
@@ -32,44 +38,38 @@ export const FoodCard = () => {
   useEffect(() => {
     fetchdata();
   }, []);
+  console.log(data, "HAHHAHA");
 
+  // [
+  //   {
+  //     Categories: "mongol hool",
+  //     foods: []
+  //   },
+  // ];
+  console.log(data[0], "test");
   return (
     <div className="flex flex-col">
-    <div className="flex pt-[54px] flex-col w-full">
-      <h1 className="font-[600] text-[30px] text-white">mongol hool</h1>
-      <div className="flex gap-5 pt-[54px] flex-wrap">
-      {data?.map((value: any, index: any) => (
-        <Dialog key={index}>
-          <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
-            <img
-              className="w-[365px] h-[210px]"
-              src={value.image}
-              alt="foodimage"
-            />
-            <div className="flex flex-col gap-2">
-              <div className=" flex justify-between gap-2 w-full items-center">
-                <p className="text-[#EF4444] text-6 font-semibold leading-8 h-8">
-                  {value.foodName}
-                </p>
-                <p>{value.price}</p>
-              </div>
-              <p className="text-[#09090B] text-[14px] font-normal leading-5">
-                {value.ingredients}
-              </p>
+      <div className="flex pt-[54px] flex-col w-full">
+        {data.map((element) => (
+          <div key={element._id}>
+            <h1 className="font-[600] text-[30px] text-white">
+              {element.name}
+            </h1>
+            <div className="flex gap-5 pt-[54px] flex-wrap">
+              {element.result.map((food, index) => {
+                return (
+                  <FoodCardHelper
+                    key={index}
+                    imgSrc={food.image}
+                    foodName={food.foodName}
+                    price={food.price}
+                    ingredients={food.ingredients}
+                  />
+                );
+              })}
             </div>
-          </DialogTrigger>
-
-          <DialogContent className="w-[826px] h-[412px] p-6">
-            <DialogHeader>
-              <DialogTitle>
-                <img src={value.image}></img>
-              </DialogTitle>
-              <DialogDescription></DialogDescription>
-            </DialogHeader>
-          </DialogContent>
-        </Dialog>
-      ))}
-     </div>
+          </div>
+        ))}
       </div>
     </div>
   );
