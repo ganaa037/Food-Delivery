@@ -10,10 +10,13 @@ import {
 } from "@/components/ui/carousel";
 import axios from "axios";
 import { FoodCard } from "./FoodCard";
-type categoryType = { name: string };
+import { useRouter, useSearchParams } from "next/navigation";
+type categoryType = { name: string; _id: string };
 
 export const Categories = () => {
   const [categories, setCategories] = useState<categoryType[]>([]);
+  const searchParams = useSearchParams();
+  const id = searchParams.get("categoryId");
   const fetchCategory = async () => {
     const res = await axios.get(
       `${process.env.NEXT_PUBLIC_BACKEND_URI}/category`
@@ -24,7 +27,12 @@ export const Categories = () => {
   useEffect(() => {
     fetchCategory();
   }, []);
-
+  const router = useRouter();
+  const handleClick = (_id: string) => {
+    {
+      id == _id ? router.push("/") : router.push(`?categoryId=${_id}`);
+    }
+  };
   return (
     <div className="flex flex-col gap-9 px-12 ">
       <p className="text-[30px] font-semibold leading-9 text-[#FFF]">
@@ -35,7 +43,14 @@ export const Categories = () => {
           {categories?.map((value, index) => {
             return (
               <CarouselItem key={index} className="basis-auto">
-                <button className="bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px]">
+                <button
+                  onClick={() => handleClick(value._id)}
+                  className={`bg-[#F4F4F5] text-[black] text-[18px] font-normal leading-7 py-1 px-5 rounded-[9999px] ${
+                    id === value._id
+                      ? "bg-red-500 text-white"
+                      : "bg-[#F4F4F5] text-black"
+                  }`}
+                >
                   {value.name}
                 </button>
               </CarouselItem>

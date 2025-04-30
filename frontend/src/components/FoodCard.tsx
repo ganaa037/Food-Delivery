@@ -37,8 +37,7 @@ export const FoodCard = () => {
 
   useEffect(() => {
     fetchdata();
-  }, []);
-  console.log(data, "HAHHAHA");
+  }, [searchParams]);
 
   // [
   //   {
