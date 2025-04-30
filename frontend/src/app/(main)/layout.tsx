@@ -8,7 +8,7 @@ export default function AuthLayout({
 }) {
   return (
     <div className="flex h-screen flex-col w-[1440px]">
-      <Header sign={true} className="" />
+      <Header sign={true} />
       {children}
       <Footer />
     </div>
