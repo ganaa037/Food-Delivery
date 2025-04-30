@@ -22,12 +22,12 @@ export const FoodCardHelper = ({
 }: CardType) => {
   return (
     <Dialog>
+      <Button className="absolute left-75 bottom-10 bg-white rounded-[50%] w-11 h-11">
+        <CirclePlus className="text-red-400  " />
+      </Button>
       <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
         <div className="relative">
           <img className="w-[365px] h-[210px]" src={imgSrc} alt="foodimage" />
-          <Button className="absolute left-75 bottom-10 bg-white rounded-[50%] w-11 h-11">
-            <CirclePlus className="text-red-400  " />
-          </Button>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -47,7 +47,7 @@ export const FoodCardHelper = ({
         <DialogHeader>
           <DialogTitle></DialogTitle>
           <DialogDescription className="flex w-[377px] h-[364px] gap-6">
-            {/* <img className="" src={imgSrc}></img>
+            <img className="rounded-[20px]" src={imgSrc}></img>
             <div className="flex flex-col justify-between w-[377px] h-[364px]">
               <div className="flex ">
                 <p>{foodName}</p>
@@ -61,7 +61,7 @@ export const FoodCardHelper = ({
                 <p>Total price </p>
                 <p>$12.99 </p>
               </div>
-            </div> */}
+            </div>
           </DialogDescription>
         </DialogHeader>
       </DialogContent>

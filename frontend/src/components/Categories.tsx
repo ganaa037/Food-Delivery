@@ -30,7 +30,7 @@ export const Categories = () => {
   const router = useRouter();
   const handleClick = (_id: string) => {
     {
-      id == _id ? router.push("/") : router.push(`?categoryId=${_id}`);
+      id == _id ? router.push("/home-page") : router.push(`?categoryId=${_id}`);
     }
   };
   return (
