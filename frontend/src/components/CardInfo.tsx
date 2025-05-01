@@ -13,10 +13,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import {
   ChevronRight,
+  Map,
   MapPin,
   Minus,
   Plus,
   ShoppingCart,
+  Soup,
+  Timer,
   User,
   X,
 } from "lucide-react";
@@ -29,6 +32,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Input } from "./ui/input";
+import { OrderTabCart } from "./OrderTabCart";
 
 export const CardInfo = () => {
   return (
@@ -73,55 +77,56 @@ export const CardInfo = () => {
                   <TabsTrigger value="account">Cart</TabsTrigger>
                   <TabsTrigger value="password">Order</TabsTrigger>
                 </TabsList>
-                <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4 ">
-                  <TabsContent value="account" className="flex gap-5  flex-col">
-                    <p className="text-[#09090B] text-5 font-semibold leading-7">
-                      My cart
-                    </p>
-                    <div className="flex gap-[10px] ">
-                      <img
-                        className="w-[124px] h-[120px] rounded-[12px]"
-                        src="order.png"
-                      />
-                      <div className="flex flex-col gap-5">
-                        <div className="flex">
-                          <div className="flex flex-col">
-                            <p className="text-[#EF4444] text-4 font-bold text-nowrap">
-                              Sunshine Stackers
-                            </p>
 
-                            <p>
-                              Fluffy pancakes stacked with fruits, cream, syrup,
-                              and powdered sugar.
-                            </p>
-                          </div>
-                          <Button className="w-9 h-9 rounded-[9999px] px-4 py-2 bg-white border border-red-600">
-                            <X className="text-red-600" />
-                          </Button>
+                <TabsContent value="account" className="">
+                  <OrderTabCart />
+                </TabsContent>
+
+                <TabsContent value="password" className="">
+                  <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
+                    <p>Order history</p>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex justify-between">
+                        <div className="flex gap-2">
+                          <p>$26.97</p>
+                          <p>(#20156)</p>
                         </div>
-                        <div className="flex justify-between">
-                          <div className="flex gap-6">
-                            <button>
-                              <Minus />
-                            </button>
-                            <p>1</p>
-                            <button>
-                              <Plus />
-                            </button>
-                          </div>
-                          <p>12000</p>
+                        <p className="w-17 h-7 border border-red-500 rounded-2xl px-[10px] py-1 text-3">
+                          Pending
+                        </p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="flex  gap-2 ">
+                          <Soup />
+                          <p>Sunshine Stackers</p>
                         </div>
+                        <p>1</p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="flex  gap-2 ">
+                          <Soup />
+                          <p>Sunshine Stackers</p>
+                        </div>
+                        <p>1</p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="flex  gap-2 ">
+                          <Timer />
+                          <p>Sunshine Stackers</p>
+                        </div>
+                        <p>1</p>
+                      </div>
+                      <div className="flex justify-between">
+                        <div className="flex  gap-2 ">
+                          <Map />
+                          <p>Sunshine Stackers</p>
+                        </div>
+                        <p>1</p>
                       </div>
                     </div>
-                    <p className=""></p>
-                  </TabsContent>
-                </div>
-
-                <div>
-                  <TabsContent value="password" className="">
-                    hfdh
-                  </TabsContent>
-                </div>
+                    <p className="w-[439px] h-[1px] border border-gray-400"></p>
+                  </div>
+                </TabsContent>
               </Tabs>
             </SheetDescription>
           </SheetHeader>
