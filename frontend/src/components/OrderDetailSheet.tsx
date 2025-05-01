@@ -15,8 +15,7 @@ import {
   ChevronRight,
   Map,
   MapPin,
-  Minus,
-  Plus,
+ 
   ShoppingCart,
   Soup,
   Timer,
@@ -34,7 +33,7 @@ import {
 import { Input } from "./ui/input";
 import { OrderTabCart } from "./OrderTabCart";
 
-export const CardInfo = () => {
+export const OrderDetailSheet = () => {
   return (
     <div className="flex gap-3">
       <Dialog>

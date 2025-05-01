@@ -1,8 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "./ui/button";
-import { CardInfo } from "./CardInfo";
+
 import { Icon } from "./Icon";
+import {  OrderDetailSheet } from "./OrderDetailSheet";
 
 export const Header = () => {
   return (
@@ -16,7 +17,7 @@ export const Header = () => {
         <Button className="bg-[#EF4444]">login</Button>
       </div>
 
-      <CardInfo />
+      <OrderDetailSheet/>
     </div>
   );
 };

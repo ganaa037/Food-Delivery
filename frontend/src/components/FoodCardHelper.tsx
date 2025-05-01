@@ -28,7 +28,7 @@ export const FoodCardHelper = ({
           <Plus className=" text-red-400  " />
         </Button>
         <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
-          <div className="relative">
+          <div className="">
             <img className="w-[365px] h-[210px]" src={imgSrc} alt="foodimage" />
           </div>
 
@@ -39,7 +39,7 @@ export const FoodCardHelper = ({
               </p>
               <p>{price}</p>
             </div>
-            <p className="text-[#09090B] text-[14px] font-normal leading-5">
+            <p className="text-[#09090B] text-[14px] font-normal leading-5 w-fit">
               {ingredients}
             </p>
           </div>

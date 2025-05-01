@@ -1,3 +1,7 @@
+import { Admin } from "@/components/Admin";
+
 export default function Home() {
-  return <div></div>;
+  return <div>
+    <Admin/>
+  </div>;
 }
