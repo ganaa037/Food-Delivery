@@ -15,7 +15,6 @@ import {
   ChevronRight,
   Map,
   MapPin,
- 
   ShoppingCart,
   Soup,
   Timer,
@@ -32,6 +31,7 @@ import {
 } from "@/components/ui/sheet";
 import { Input } from "./ui/input";
 import { OrderTabCart } from "./OrderTabCart";
+import { OrderHistory } from "./OrderHistory";
 
 export const OrderDetailSheet = () => {
   return (
@@ -78,52 +78,23 @@ export const OrderDetailSheet = () => {
                 </TabsList>
 
                 <TabsContent value="account" className="">
-                  <OrderTabCart />
+                  <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
+                    <p className="text-[#09090B] text-5 font-semibold leading-7">
+                      My cart
+                    </p>
+                    <OrderTabCart />
+                    <OrderTabCart />
+                    <Button className="bg-white border border-red-500 text-red-500">
+                      Add food
+                    </Button>
+                  </div>
                 </TabsContent>
 
                 <TabsContent value="password" className="">
                   <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
                     <p>Order history</p>
-                    <div className="flex flex-col gap-3">
-                      <div className="flex justify-between">
-                        <div className="flex gap-2">
-                          <p>$26.97</p>
-                          <p>(#20156)</p>
-                        </div>
-                        <p className="w-17 h-7 border border-red-500 rounded-2xl px-[10px] py-1 text-3">
-                          Pending
-                        </p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex  gap-2 ">
-                          <Soup />
-                          <p>Sunshine Stackers</p>
-                        </div>
-                        <p>1</p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex  gap-2 ">
-                          <Soup />
-                          <p>Sunshine Stackers</p>
-                        </div>
-                        <p>1</p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex  gap-2 ">
-                          <Timer />
-                          <p>Sunshine Stackers</p>
-                        </div>
-                        <p>1</p>
-                      </div>
-                      <div className="flex justify-between">
-                        <div className="flex  gap-2 ">
-                          <Map />
-                          <p>Sunshine Stackers</p>
-                        </div>
-                        <p>1</p>
-                      </div>
-                    </div>
-                    <p className="w-[439px] h-[1px] border border-gray-400"></p>
+                    <OrderHistory />
+                    <OrderHistory />
                   </div>
                 </TabsContent>
               </Tabs>

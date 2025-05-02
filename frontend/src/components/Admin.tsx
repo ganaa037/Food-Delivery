@@ -1,4 +1,3 @@
-
 import {
   Table,
   TableBody,
@@ -7,7 +6,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 import {
   Select,
   SelectContent,
@@ -16,12 +15,8 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 export const Admin = () => {
-  return (
-    <div>
-         
-    </div>
-  )
-}
+  return <div className="w-[205px] h-[1024px] py-9 px-5"></div>;
+};
