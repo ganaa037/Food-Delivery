@@ -14,6 +14,7 @@ type food = {
   foodName: string;
   price: number;
   ingredients: string;
+  _id: string;
 };
 interface foodType {
   _id: string;
@@ -45,6 +46,20 @@ export const FoodCard = () => {
   //     foods: []
   //   },
   // ];
+
+  const setOrder = (value: any) => {
+    const card = JSON.parse(localStorage.getItem("foods") || "[]");
+    const plusQuantity = card.findIndex((el: any) => el._id === value._id);
+    let updated;
+    if (plusQuantity !== -1) {
+      card[plusQuantity].quantity += 1;
+      updated = [...card];
+    } else {
+      updated = [...card, value];
+    }
+    localStorage.setItem("foods", JSON.stringify(updated));
+  };
+
   console.log(data[0], "test");
   return (
     <div className="flex flex-col">
@@ -55,14 +70,15 @@ export const FoodCard = () => {
               {element.name}
             </h1>
             <div className="flex gap-5 pt-[54px] flex-wrap">
-              {element.result.map((food, index) => {
+              {element.result.map((value, index) => {
                 return (
                   <FoodCardHelper
+                    setOrder={() => setOrder(value)}
                     key={index}
-                    imgSrc={food.image}
-                    foodName={food.foodName}
-                    price={food.price}
-                    ingredients={food.ingredients}
+                    imgSrc={value.image}
+                    foodName={value.foodName}
+                    price={value.price}
+                    ingredients={value.ingredients}
                   />
                 );
               })}

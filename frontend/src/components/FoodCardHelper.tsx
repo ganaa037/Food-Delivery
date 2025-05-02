@@ -14,8 +14,10 @@ type CardType = {
   foodName: string;
   price: number;
   ingredients: string;
+  setOrder: () => void;
 };
 export const FoodCardHelper = ({
+  setOrder,
   imgSrc,
   foodName,
   price,
@@ -24,14 +26,16 @@ export const FoodCardHelper = ({
   return (
     <Dialog>
       <div className="size-fit relative">
-        <Button className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11">
+        <Button
+          onClick={setOrder}
+          className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11"
+        >
           <Plus className=" text-red-400  " />
         </Button>
         <DialogTrigger className="w-[397px] h-[342px] border p-4 rounded-[20px] gap-5 flex flex-col bg-white">
           <div className="">
             <img className="w-[365px] h-[210px]" src={imgSrc} alt="foodimage" />
           </div>
-
           <div className="flex flex-col gap-2">
             <div className=" flex justify-between gap-2 w-full items-center">
               <p className="text-[#EF4444] text-6 font-semibold leading-8 h-8">

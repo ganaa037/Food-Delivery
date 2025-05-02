@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -34,6 +35,16 @@ import { OrderTabCart } from "./OrderTabCart";
 import { OrderHistory } from "./OrderHistory";
 
 export const OrderDetailSheet = () => {
+  const [data, setData] = useState([]);
+
+  if (typeof window !== "undefined") {
+    const orderedfoods = localStorage.getItem("foods");
+    useEffect(() => {
+      setData(JSON.parse(orderedfoods as string));
+    }, []);
+  }
+  console.log(data, "data");
+
   return (
     <div className="flex gap-3">
       <Dialog>
@@ -65,41 +76,47 @@ export const OrderDetailSheet = () => {
           <ShoppingCart className="size-4" />
         </SheetTrigger>
         <SheetContent className="bg-[#404040] w-[536px] flex items-center p-[32px] ">
-          <SheetHeader>
-            <SheetTitle className="text-white">Order Detail</SheetTitle>
-            <SheetDescription className="">
-              <Tabs
-                defaultValue="account"
-                className=" flex gap-6 rounded-[5px]"
-              >
-                <TabsList className="w-[471px] ">
-                  <TabsTrigger value="account">Cart</TabsTrigger>
-                  <TabsTrigger value="password">Order</TabsTrigger>
-                </TabsList>
+          <SheetTitle className="text-white">Order Detail</SheetTitle>
 
-                <TabsContent value="account" className="">
-                  <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
-                    <p className="text-[#09090B] text-5 font-semibold leading-7">
-                      My cart
-                    </p>
-                    <OrderTabCart />
-                    <OrderTabCart />
-                    <Button className="bg-white border border-red-500 text-red-500">
-                      Add food
-                    </Button>
-                  </div>
-                </TabsContent>
+          <Tabs defaultValue="account" className=" flex gap-6 rounded-[5px]">
+            <TabsList className="w-[471px] ">
+              <TabsTrigger value="account">Cart</TabsTrigger>
+              <TabsTrigger value="password">Order</TabsTrigger>
+            </TabsList>
 
-                <TabsContent value="password" className="">
-                  <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
-                    <p>Order history</p>
-                    <OrderHistory />
-                    <OrderHistory />
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </SheetDescription>
-          </SheetHeader>
+            <TabsContent value="account" className="">
+              <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
+                <p className="text-[#09090B] text-5 font-semibold leading-7">
+                  My cart
+                </p>
+
+                {data?.map((value: any) => {
+                  return (
+                    <OrderTabCart
+                      image={value.image}
+                      key={value._id}
+                      name={value.foodName}
+                      ingredients={value.ingredients}
+                      price={value.price}
+                      quantity={value.quantity}
+                    />
+                  );
+                })}
+
+                <Button className="bg-white border border-red-500 text-red-500">
+                  Add food
+                </Button>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="password" className="">
+              <div className="w-[471px] h-[840px] bg-white  flex rounded-2xl p-4  gap-5  flex-col">
+                <p>Order history</p>
+                <OrderHistory />
+                <OrderHistory />
+              </div>
+            </TabsContent>
+          </Tabs>
         </SheetContent>
       </Sheet>
 
