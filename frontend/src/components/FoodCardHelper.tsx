@@ -1,3 +1,4 @@
+"use client"
 import {
   Dialog,
   DialogContent,
@@ -7,8 +8,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { CirclePlus, Minus, Plus } from "lucide-react";
+
 import { Button } from "./ui/button";
+import { Minus, Plus } from "lucide-react";
 type CardType = {
   imgSrc: string;
   foodName: string;
@@ -16,6 +18,7 @@ type CardType = {
   ingredients: string;
   setOrder: () => void;
 };
+import { Toaster } from "@/components/ui/sonner"
 export const FoodCardHelper = ({
   setOrder,
   imgSrc,
@@ -26,6 +29,20 @@ export const FoodCardHelper = ({
   return (
     <Dialog>
       <div className="size-fit relative">
+    
+
+      
+        
+         <Button 
+         
+          onClick={setOrder}
+          className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11"
+        >
+<Toaster/>
+
+          <Plus  className=" text-red-400  " />
+        </Button>
+     
         <Button
           onClick={setOrder}
           className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11"

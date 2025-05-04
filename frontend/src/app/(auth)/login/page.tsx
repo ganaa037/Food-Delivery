@@ -20,26 +20,29 @@ import { ImageUpload } from "@/components/ImageUpload";
 export default function page() {
   const router = useRouter();
   const handleOnClick = () => {
-    router.push("/sign-up");
+    router.push("sign-up");
   };
+  const handleClick =()=>{
+    router.push("reset-pass")
+  }
   return (
-    <div>
-      <ImageUpload />
-      {/* <Card className="w-[416px] h-[288px] flex gap-6 border-none">
+    
+      
+      <Card className="w-[416px] h-[288px] flex gap-6 border-none">
         <CardHeader>
           <SquareChevronLeft />
           <CardTitle className="text-[#09090B] text-6 font-semibold leading-8">
-            Create your account
+          Log in 
           </CardTitle>
           <CardDescription>
-            Sign up to explore your favorite dishes.
+          Log in to enjoy your favorite dishes
           </CardDescription>
         </CardHeader>
         <CardContent className="px-0 flex gap-4 flex-col">
           <Input></Input>
           <Input></Input>
           <div className="flex gap-2">
-            <p>Forgot password</p>
+            <button onClick={handleClick}>Forgot password</button>
           </div>
         </CardContent>
         <CardContent className="px-0 flex rounded-[6px]">
@@ -48,11 +51,11 @@ export default function page() {
           </Button>
         </CardContent>
         <CardFooter>
-          <p>Already have an account?</p>
+          <p>Don’t have an account?</p>
 
           <button onClick={handleOnClick}>Sign-up</button>
         </CardFooter>
-      </Card> */}
-    </div>
+      </Card> 
+    
   );
 }

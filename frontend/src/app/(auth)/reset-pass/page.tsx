@@ -1,47 +1,32 @@
-import React from "react";
-import { SquareChevronLeft } from "lucide-react";
+"use client"
+import React, { useState } from 'react'
+import { Step1 } from './Step1'
+import { Card } from '@/components/ui/card'
+import {  SquareChevronLeft, SquareChevronRight} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { step3 } from './step3'
+import { Step2 } from './Step2'
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-export  default function page ()  {
+export default function page ()  {
+  const[count, setCount]=useState(0)
+  const handleClick =()=>{
+    setCount(count + 1)
+  }
+   const handleBackClick =()=>{
+    setCount(count - 1)
+  }
+  const Steps= [Step1,Step2,step3][count]
   return (
-    <Card className="w-[416px] h-[288px] flex gap-6 border-none">
-      <CardHeader>
-        <SquareChevronLeft />
-        <CardTitle className="text-[#09090B] text-6 font-semibold leading-8">
-          Create your account
-        </CardTitle>
-        <CardDescription>
-          Sign up to explore your favorite dishes.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="px-0 flex gap-4 flex-col">
-        <Input></Input>
-        <Input></Input>
-        <div className="flex gap-2">
-          <input type="checkbox"></input>
-          <p>Show password</p>
-        </div>
-      </CardContent>
-      <CardContent className="px-0 flex rounded-[6px]">
-        <Button disabled className="w-full">
-          Let's Go
-        </Button>
-      </CardContent>
-      <CardFooter>
-        <p>Already have an account?</p>
-
-        <Link href="">Login</Link>
-      </CardFooter>
-    </Card>
-  );
-};
+    
+     <Card className="w-[416px] h-fit flex border-none">
+     <div className='flex justify-between'>
+     {count >0 && (
+      <SquareChevronLeft onClick={handleBackClick}/>)}
+      <SquareChevronRight onClick={handleClick}/>
+      </div>
+      <Steps/>
+     </Card>
+     
+   
+  )
+}

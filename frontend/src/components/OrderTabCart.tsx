@@ -16,15 +16,15 @@ export const OrderTabCart = ({
   quantity: number;
 }) => {
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 w-full">
       <div className="flex gap-[10px] ">
         <img
           className="w-[124px] h-[120px] rounded-[12px]"
           src={image}
           alt="food"
         />
-        <div className="flex flex-col gap-5">
-          <div className="flex">
+        <div className="flex flex-col w-full gap-5">
+          <div className="flex justify-between">
             <div className="flex flex-col">
               <p className="text-[#EF4444] text-4 font-bold text-nowrap">
                 {name}

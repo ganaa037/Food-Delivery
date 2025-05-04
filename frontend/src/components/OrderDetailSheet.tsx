@@ -89,7 +89,6 @@ export const OrderDetailSheet = () => {
                 <p className="text-[#09090B] text-5 font-semibold leading-7">
                   My cart
                 </p>
-
                 {data?.map((value: any) => {
                   return (
                     <OrderTabCart

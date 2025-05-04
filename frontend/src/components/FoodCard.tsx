@@ -48,6 +48,7 @@ export const FoodCard = () => {
   // ];
 
   const setOrder = (value: any) => {
+   
     const card = JSON.parse(localStorage.getItem("foods") || "[]");
     const plusQuantity = card.findIndex((el: any) => el._id === value._id);
     let updated;
@@ -58,6 +59,8 @@ export const FoodCard = () => {
       updated = [...card, value];
     }
     localStorage.setItem("foods", JSON.stringify(updated));
+  console.log(setOrder,"setl");
+
   };
 
   console.log(data[0], "test");
