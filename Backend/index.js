@@ -9,7 +9,7 @@ import { foodOrderRouter } from "./routes/foodOrder.js";
 import { foodOrderItemRouter } from "./routes/foodOrderItem.js";
 import { authRouter } from "./routes/auth.js";
 
-const port = 8000;
+const port = 3000;
 const app = express();
 connectMongoDB();
 
