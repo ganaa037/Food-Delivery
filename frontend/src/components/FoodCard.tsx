@@ -2,9 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import Image from "next/image";
 import axios from "axios";
-import { Categories } from "./Categories";
 import { useSearchParams } from "next/navigation";
 import { FoodCardHelper } from "./FoodCardHelper";
 
@@ -21,11 +19,13 @@ interface foodType {
   name: string;
   result: food[];
 }
-
 export const FoodCard = () => {
   const [data, setData] = useState<foodType[]>([]);
+
   const searchParams = useSearchParams();
+
   const categoryId = searchParams.get("categoryId");
+
   const fetchdata = async () => {
     const response = await axios.get(
       categoryId
@@ -48,7 +48,6 @@ export const FoodCard = () => {
   // ];
 
   const setOrder = (value: any) => {
-   
     const card = JSON.parse(localStorage.getItem("foods") || "[]");
     const plusQuantity = card.findIndex((el: any) => el._id === value._id);
     let updated;
@@ -59,8 +58,7 @@ export const FoodCard = () => {
       updated = [...card, value];
     }
     localStorage.setItem("foods", JSON.stringify(updated));
-  console.log(setOrder,"setl");
-
+    console.log(setOrder, "setl");
   };
 
   console.log(data[0], "test");

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "./Header";
+
 import { Facebook, InstagramIcon } from "lucide-react";
 import { Icon } from "./Icon";
 
