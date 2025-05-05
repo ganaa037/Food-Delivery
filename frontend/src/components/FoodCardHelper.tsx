@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   Dialog,
   DialogContent,
@@ -18,7 +18,6 @@ type CardType = {
   ingredients: string;
   setOrder: () => void;
 };
-import { Toaster } from "@/components/ui/sonner"
 export const FoodCardHelper = ({
   setOrder,
   imgSrc,
@@ -29,20 +28,13 @@ export const FoodCardHelper = ({
   return (
     <Dialog>
       <div className="size-fit relative">
-    
-
-      
-        
-         <Button 
-         
+        <Button
           onClick={setOrder}
           className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11"
         >
-<Toaster/>
-
-          <Plus  className=" text-red-400  " />
+          <Plus className=" text-red-400  " />
         </Button>
-     
+
         <Button
           onClick={setOrder}
           className="absolute left-75 z-1 bottom-30 bg-white rounded-[50%] w-11 h-11"

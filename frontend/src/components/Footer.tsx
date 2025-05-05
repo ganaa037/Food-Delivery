@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./Header";
 import { Facebook, InstagramIcon } from "lucide-react";
+import { Icon } from "./Icon";
 
 export const Footer = () => {
   return (
@@ -14,8 +15,9 @@ export const Footer = () => {
         </div>
       </div>
       <div className="flex ">
-        <div>{/* <Header sign={false} className="px-0" /> */}</div>
         <div className="text-[#FAFAFA] text-4 font-normal leading-6 flex gap-[112px] ">
+          <Icon />
+
           <div className="">
             <p className="text-[#71717A] leading-7">NOMNOM </p>
             <p>Home </p>
